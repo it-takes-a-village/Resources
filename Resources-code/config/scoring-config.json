@@ -1,0 +1,33 @@
+{
+  "version": "3.0",
+  "weights": {
+    "primaryExactTag": 25,
+    "primarySimilarTag": 15,
+    "primaryRelatedTag": 4,
+    "secondaryExactTag": 12,
+    "secondarySimilarTag": 7,
+    "secondaryRelatedTag": 2,
+    "primaryExactDescription": 5,
+    "primaryPartialDescription": 3,
+    "primaryKeywordDescription": 1,
+    "secondaryExactDescription": 3,
+    "secondaryPartialDescription": 2,
+    "secondaryKeywordDescription": 1,
+    "predictedExactTag": 3,
+    "predictedSimilarTag": 1,
+    "predictedDescription": 1,
+    "majorIssuePenalty": -5,
+    "minorIssuePenalty": -2
+  },
+  "limits": {
+    "minimumScore": 0,
+    "defaultResults": 5,
+    "minimumResults": 3,
+    "maximumResults": 10,
+    "maximumGateRatio": 0.2,
+    "maximumPrimaryKeywords": 20,
+    "maximumSecondaryKeywords": 12,
+    "maximumPredictedKeywords": 12,
+    "maximumFollowUpQuestions": 3
+  }
+}

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3e8" />
+    <meta name="description" content="It Takes a Village: a personalized neurodiversity resource guide for caregivers." />
+    <title>It Takes a Village</title>
+    <link rel="icon" type="image/png" href="/assets/cohort-3-group-d3-logo.png" />
+    <link rel="apple-touch-icon" href="/assets/cohort-3-group-d3-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=village-guide-voice-20260625" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <section id="auth-screen" class="screen auth-shell" aria-labelledby="auth-title">
+      <div class="auth-art" aria-hidden="true">
+        <div class="auth-landscape"></div>
+        <div class="welcome-capy"><span class="capy-ear left"></span><span class="capy-ear right"></span><span class="capy-eye left"></span><span class="capy-eye right"></span><span class="capy-nose"></span></div>
+        <p>A small village can hold a lot of help.</p>
+      </div>
+      <div class="auth-card">
+        <div class="brand-lockup brand-logo-lockup"><img src="/assets/it-takes-a-village-logo.svg" alt="It Takes a Village" /></div>
+        <p class="eyebrow">A calmer place to begin</p>
+        <h1 id="auth-title">Welcome to your village.</h1>
+        <p class="lede">Create an account, tell us what matters, and explore resources at your own pace.</p>
+        <div id="auth-tabs" class="segmented" role="tablist" aria-label="Account options">
+          <button type="button" class="segment active" data-auth-mode="register" role="tab" aria-selected="true">Create account</button>
+          <button type="button" class="segment" data-auth-mode="login" role="tab" aria-selected="false">Log in</button>
+        </div>
+        <form id="auth-form" class="stack-form">
+          <label id="name-field">Your name<input name="name" autocomplete="name" /></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" required /><small>At least 8 characters. Never stored in Google Sheets.</small></label>
+          <button id="forgot-password-button" class="auth-link hidden" type="button" data-action="open-password-reset">Forgot password?</button>
+          <p id="auth-error" class="form-error" role="alert"></p>
+          <button class="primary-button" type="submit"><span id="auth-submit-label">Create my village</span><span aria-hidden="true">→</span></button>
+        </form>
+        <section id="password-reset-card" class="password-reset-card hidden" aria-labelledby="password-reset-title">
+          <button type="button" class="auth-link back-link" data-action="close-password-reset">← Back to login</button>
+          <p class="eyebrow">Secure account recovery</p>
+          <h2 id="password-reset-title">Reset your password</h2>
+          <p class="lede">Enter your account email. We’ll send a six-digit verification code that expires in 10 minutes. If it does not appear, check Spam or Junk.</p>
+          <p id="password-email-sender" class="email-sender-note">The message will come from the It Takes a Village Gmail account. It may land in Spam or Junk.</p>
+          <form id="password-request-form" class="stack-form">
+            <label>Email address<input name="email" type="email" autocomplete="email" required /></label>
+            <button class="primary-button" type="submit">Send verification code →</button>
+            <p id="password-request-status" class="form-error" role="status"></p>
+          </form>
+          <form id="password-confirm-form" class="stack-form hidden">
+            <p class="verification-destination">Code sent to <strong id="password-reset-email"></strong></p>
+            <label class="verification-code">Six-digit code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
+            <label>New password<input name="password" type="password" autocomplete="new-password" minlength="8" required /></label>
+            <label>Confirm new password<input name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" required /></label>
+            <button class="primary-button" type="submit">Reset password →</button>
+            <p id="password-confirm-status" class="form-error" role="alert"></p>
+          </form>
+        </section>
+        <div id="auth-guest-entry" class="guest-entry"><span>or</span><button type="button" class="secondary-button" data-action="continue-guest">Continue as guest</button><small>Guest visits are temporary. Village Community is available to registered members only.</small></div>
+        <p id="auth-privacy" class="privacy-note">Your account password is salted and hashed on the server. This prototype is not a medical or diagnostic service.</p>
+      </div>
+    </section>
+
+    <section id="survey-screen" class="screen survey-shell hidden" aria-labelledby="survey-title">
+      <header class="simple-header">
+        <div class="brand-lockup brand-logo-lockup"><img src="/assets/it-takes-a-village-logo.svg" alt="It Takes a Village" /></div>
+        <button class="text-button" data-action="logout">Log out</button>
+      </header>
+      <main class="survey-main">
+        <div class="progress-rail"><span>Account</span><span class="active">Community Compass</span><span>Village</span></div>
+        <p class="eyebrow">First visit · about 2 minutes</p>
+        <h1 id="survey-title">What would make the village more useful to you?</h1>
+        <p class="lede">These answers create a personal record for resource matching. They are not used to diagnose anyone.</p>
+        <form id="survey-form" class="survey-grid">
+          <fieldset>
+            <legend>Which area(s) are you interested in exploring?</legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="interests" value="ADHD" /><span>ADHD</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="Autism" /><span>Autism</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="General neurodiversity" /><span>General neurodiversity</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="Unsure" /><span>Still exploring</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>What age group are you looking for?</legend>
+            <div class="choice-grid compact">
+              <label class="choice"><input type="radio" name="age" value="0–3" required /><span>0–3</span></label>
+              <label class="choice"><input type="radio" name="age" value="4–7" /><span>4–7</span></label>
+              <label class="choice"><input type="radio" name="age" value="8–12" /><span>8–12</span></label>
+              <label class="choice"><input type="radio" name="age" value="13–18" /><span>13–18</span></label>
+              <label class="choice"><input type="radio" name="age" value="Adult" /><span>Adult</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>How long have you been navigating neurodiversity?</legend>
+            <select name="journey" required>
+              <option value="">Choose one</option>
+              <option>Just starting</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>More than 5 years</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Which best describes your current situation?</legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="situation" value="Recently diagnosed" /><span>Recently diagnosed</span></label>
+              <label class="choice"><input type="checkbox" name="situation" value="Exploring concerns" /><span>Exploring concerns</span></label>
+              <label class="choice"><input type="checkbox" name="situation" value="Established diagnosis" /><span>Established diagnosis</span></label>
+              <label class="choice"><input type="checkbox" name="situation" value="Prefer not to say" /><span>Prefer not to say</span></label>
+            </div>
+          </fieldset>
+          <label class="wide-field">Anything you want Waffles to keep in mind? <span>(optional)</span><textarea name="note" rows="3" placeholder="For example: free local programs, help preparing for an IEP meeting…"></textarea></label>
+          <div class="form-actions">
+            <a id="original-survey-link" class="secondary-button" target="_blank" rel="noreferrer">Open original Google Form ↗</a>
+            <button class="primary-button" type="submit">Create my personal record <span aria-hidden="true">→</span></button>
+          </div>
+          <p id="survey-error" class="form-error" role="alert"></p>
+        </form>
+      </main>
+    </section>
+
+    <section id="app-screen" class="screen app-shell hidden">
+      <div id="island-transition" class="island-transition hidden" aria-hidden="true"><div class="auspicious-cloud cloud-a"></div><div class="auspicious-cloud cloud-b"></div><div class="auspicious-cloud cloud-c"></div><div class="transition-copy"><small>It Takes a Village</small><strong id="transition-island-name">Entering the island…</strong></div></div>
+      <section id="waffles-intro" class="waffles-intro hidden" role="dialog" aria-modal="true" aria-labelledby="waffles-intro-title">
+        <div class="waffles-intro-card">
+          <button type="button" class="intro-skip" data-action="intro-skip">Skip introduction</button>
+          <div class="intro-capy" aria-hidden="true"><span class="capy-avatar"><span class="capy-ear left"></span><span class="capy-ear right"></span><span class="capy-eye left"></span><span class="capy-eye right"></span><span class="capy-nose"></span></span><span class="intro-spark spark-one">✦</span><span class="intro-spark spark-two">✧</span></div>
+          <div class="intro-copy"><p id="waffles-intro-eyebrow" class="eyebrow">Meet your village guide</p><h2 id="waffles-intro-title">Hi, I’m Waffles.</h2><p id="waffles-intro-text"></p><div id="waffles-intro-building" class="intro-building-badge hidden"></div></div>
+          <div class="intro-progress"><span id="waffles-intro-count">1 of 6</span><div id="waffles-intro-dots" class="intro-dots" aria-hidden="true"></div></div>
+          <div class="intro-actions"><button type="button" id="intro-back" class="secondary-button" data-action="intro-back">← Back</button><button type="button" id="intro-next" class="primary-button" data-action="intro-next">Next →</button></div>
+        </div>
+      </section>
+      <header class="app-header">
+        <a class="brand-lockup brand-logo-lockup" href="#" data-action="home"><img src="/assets/it-takes-a-village-logo.svg" alt="It Takes a Village" /></a>
+        <nav aria-label="Main navigation"><button data-action="home" class="nav-button active" data-i18n="village">Village</button><button data-action="open-profile" class="nav-button" data-i18n="myRecord">My record</button></nav>
+        <div class="header-tools">
+          <button id="calm-toggle" class="pill-button" aria-pressed="false"><span aria-hidden="true">✧</span> <span data-i18n="lowStimulation">Low-stimulation</span></button>
+          <button class="settings-icon-button" data-action="open-settings" aria-label="Open settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="m19.1 13.7 1.5 1.2-1.9 3.3-1.9-.7c-.6.5-1.3.9-2.1 1.2l-.3 2h-3.8l-.3-2c-.8-.3-1.5-.7-2.1-1.2l-1.9.7-1.9-3.3 1.5-1.2a8 8 0 0 1 0-2.4l-1.5-1.2 1.9-3.3 1.9.7c.6-.5 1.3-.9 2.1-1.2l.3-2h3.8l.3 2c.8.3 1.5.7 2.1 1.2l1.9-.7 1.9 3.3-1.5 1.2a8 8 0 0 1 0 2.4Z"/></svg></button>
+          <button class="avatar-button" data-action="open-profile" aria-label="Open my record"><span id="avatar-initial">C</span></button>
+        </div>
+      </header>
+
+      <main id="main" class="village-main">
+        <div class="hero-copy">
+          <div><p class="eyebrow" data-i18n="choosePath">Choose your own path</p><h1 data-i18n="begin">Where would you like to begin?</h1><p data-i18n="explore">Explore at your own pace. There is no wrong door—and Waffles can help make any topic feel more manageable.</p></div>
+          <button id="reset-map" class="secondary-button hidden" data-action="reset-map" data-i18n="viewBoth">← View both islands</button>
+        </div>
+
+        <section id="village-map" class="village-map" aria-label="Interactive map of Autism Island and ADHD Island">
+          <div id="environment-status" class="environment-status" aria-live="polite">
+            <span id="environment-icon" class="environment-icon" aria-hidden="true">◌</span>
+            <span class="environment-copy"><strong id="environment-summary">Finding your local sky…</strong><small id="environment-detail">Approximate location by IP · Open-Meteo</small></span>
+            <button type="button" data-action="refresh-environment" aria-label="Refresh local weather">↻</button>
+          </div>
+          <div id="map-stage" class="map-stage">
+            <canvas id="immersive-scene" class="immersive-scene" aria-hidden="true"></canvas>
+            <div id="environment-layer" class="environment-layer" aria-hidden="true">
+              <div class="sky-tint"></div>
+              <div id="star-field" class="star-field"></div>
+              <div id="environment-sun" class="celestial sun"></div>
+              <div id="environment-moon" class="celestial moon"></div>
+              <div class="cloud cloud-one"></div>
+              <div class="cloud cloud-two"></div>
+              <div class="cloud cloud-three"></div>
+              <div class="weather-particles"></div>
+              <div class="season-particles"></div>
+              <div class="lightning-flash"></div>
+            </div>
+            <img id="map-image" alt="Two illustrated green islands connected by a wooden bridge" />
+            <canvas id="surface-motion" class="surface-motion" aria-hidden="true"></canvas>
+            <div id="habitat-layer" class="habitat-layer" aria-hidden="true">
+              <span class="habitat-feature autism-grove"></span><span class="habitat-feature autism-pond"></span><span class="habitat-feature adhd-wildflowers"></span><span class="habitat-feature adhd-stream"></span>
+              <div id="creature-layer" class="creature-layer"></div>
+              <div id="sky-creature-layer" class="sky-creature-layer"></div>
+            </div>
+            <button class="island-hit-area autism" type="button" data-island="autism" aria-label="Enter Autism Island"></button>
+            <button class="island-hit-area adhd" type="button" data-island="adhd" aria-label="Enter ADHD Island"></button>
+            <button class="island-label autism" type="button" data-island="autism"><span class="island-dot"></span><span><small data-i18n="quietGardens">Quiet gardens</small><strong data-i18n="autismIsland">Autism Island</strong></span><span aria-hidden="true">→</span></button>
+            <button class="island-label adhd" type="button" data-island="adhd"><span class="island-dot"></span><span><small data-i18n="momentumTrails">Momentum trails</small><strong data-i18n="adhdIsland">ADHD Island</strong></span><span aria-hidden="true">→</span></button>
+            <div id="building-layer"></div>
+          </div>
+          <div class="map-hint"><span aria-hidden="true">↖</span> <span data-i18n="selectIsland">Tap an island, then choose a building</span></div>
+        </section>
+
+        <section class="village-footer-cards" aria-label="Village status">
+          <article><span class="mini-icon">↻</span><div><strong id="resource-count" data-i18n="resourcesLoading">Loading resources…</strong><small id="resource-source" data-i18n="resourcesChecking">Checking the live database</small></div><button data-action="refresh-resources" data-i18n="refresh">Refresh</button></article>
+          <article><span class="mini-icon warm">✓</span><div><strong id="record-status-title" data-i18n="personalReady">Your personal record is ready</strong><small id="record-status-detail" data-i18n="personalMatch">Waffles uses it only to improve matching</small></div><button id="record-status-action" data-action="open-profile" data-i18n="view">View</button></article>
+        </section>
+      </main>
+
+      <aside id="panel" class="side-panel" aria-hidden="true" aria-labelledby="panel-title">
+        <div class="panel-top"><div><p id="panel-eyebrow" class="eyebrow">Building</p><h2 id="panel-title">Panel</h2></div><button class="icon-button" data-action="close-panel" aria-label="Close panel">×</button></div>
+        <div id="panel-content" class="panel-content"></div>
+      </aside>
+      <button id="panel-scrim" class="panel-scrim" data-action="close-panel" aria-label="Close panel"></button>
+
+      <button id="mori-dock" class="mori-dock" data-action="open-mori" aria-label="Open Waffles site guider">
+        <span class="capy-avatar"><span class="capy-ear left"></span><span class="capy-ear right"></span><span class="capy-eye left"></span><span class="capy-eye right"></span><span class="capy-nose"></span></span>
+        <span><small data-i18n="jaGuide">Waffles · Site guider</small><strong data-i18n="jaReady">Ask me how this village works.</strong></span><span class="dock-arrow">↑</span>
+      </button>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <script src="/site-config.js?v=village-guide-voice-20260625"></script>
+    <script type="module" src="/app.js?v=village-guide-voice-20260625"></script>
+  </body>
+</html>
